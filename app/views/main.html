@@ -1,0 +1,138 @@
+<form class="form-horizontal" ng-submit="processForm()" name="ClothingConversionForm">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Clothing Size Conversion</legend>
+        <!-- Select Basic -->
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-4">
+                <select id="GenderType" name="GenderType" class="form-control" ng-model="genderType" required>
+                    <option value=""> -- Select a Gender -- </option>
+                    <option value="isMale">Male</option>
+                    <option value="isFemale">Female</option>
+                </select>
+            </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group" ng-show="genderType=='isMale'">
+            <div class="col-md-4 col-md-offset-4">
+                <select id="MaleClothingType" name="MaleClothingType" class="form-control" ng-model="maleType" required>
+                    <option value=""> -- Select Clothing Type -- </option>
+                    <option value="isMenShoes">Shoes</option>
+                    <option value="isMenPants">Pants</option>
+                    <option value="isMenShirts">Shirts</option>
+                    <option value="isMenTops">Tops</option>
+                </select>
+            </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group" ng-show="genderType=='isFemale'">
+            <div class="col-md-4 col-md-offset-4">
+                <select id="FemaleClothingType" name="FemaleClothingType" class="form-control" ng-model="femaleType" required>
+                    <option value=" "> -- Select Clothing Type -- </option>
+                    <option value="isWomenShoes">Shoes</option>
+                    <option value="isWomenClothes">Clothes</option>
+                    <option value="isWomenBras">Bras</option>
+                </select>
+            </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group" ng-show="femaleType || maleType">
+            <div class="col-md-4 col-md-offset-4">
+                <select id="InputCountry" name="InputCountry" class="form-control" ng-model="inputCountry">
+                    <option value=""> -- From which Country  -- </option>
+                    <option value="AU">Australia</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="EU">Europe</option>
+                    <option value="CH">China</option>
+                    <option value="JP">Japan</option>
+                </select>
+            </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group" ng-show="femaleType || maleType">
+            <div class="col-md-4 col-md-offset-4">
+                <select id="ToCountry" name="ToCountry" class="form-control" ng-model="fromCountry">
+                    <option value=""> -- To which Country -- </option>
+                    <option value="AU">Australia</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="EU">Europe</option>
+                    <option value="CH">China</option>
+                    <option value="JP">Japan</option>
+                </select>
+            </div>
+        </div>
+        <!-- Select Basic -->
+        <div class="form-group" ng-show="inputCountry">
+            <div class="col-md-4 col-md-offset-4">
+                <select id="InputSize" name="InputSize" class="form-control" ng-model="inputSize" required>
+                    <option value=""> -- Select Size -- </option>
+                <!-- Shoes For Male and Female -->
+                    <!-- female Shoes -->
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'US') && (femaleType === 'isWomenShoes')" ng-repeat="shoe in WomenShoes.US" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'UK') && (femaleType === 'isWomenShoes')" ng-repeat="shoe in WomenShoes.UK" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'EU') && (femaleType === 'isWomenShoes')" ng-repeat="shoe in WomenShoes.EU" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'CH') && (femaleType === 'isWomenShoes')" ng-repeat="shoe in WomenShoes.CH" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'JP') && (femaleType === 'isWomenShoes')" ng-repeat="shoe in WomenShoes.JP" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'AU') && (femaleType === 'isWomenShoes')" ng-repeat="shoe in WomenShoes.AU" ng-value="{{$index}}">{{shoe}}</option>
+                    <!-- Male Shoes -->
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'US') && (maleType === 'isMenShoes')" ng-repeat="shoe in MaleShoes.US | filter:removeBlank" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'UK') && (maleType === 'isMenShoes')" ng-repeat="shoe in MaleShoes.UK | filter:removeBlank" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'EU') && (maleType === 'isMenShoes')" ng-repeat="shoe in MaleShoes.EU | filter:removeBlank" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'CH') && (maleType === 'isMenShoes')" ng-repeat="shoe in MaleShoes.CH | filter:removeBlank" ng-value="{{$index}}"><span ng-if="shoe.includes('NA')">{{shoe}}</span></option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'JP') && (maleType === 'isMenShoes')" ng-repeat="shoe in MaleShoes.JP | filter:removeBlank" ng-value="{{$index}}">{{shoe}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'AU') && (maleType === 'isMenShoes')" ng-repeat="shoe in MaleShoes.AU | filter:removeBlank" ng-value="{{$index}}">{{shoe}}</option>
+                <!-- Women Clothes -->
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'US') && (femaleType === 'isWomenClothes')" ng-repeat="item in FemaleClothes.US | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'UK') && (femaleType === 'isWomenClothes')" ng-repeat="item in FemaleClothes.UK| filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'EU') && (femaleType === 'isWomenClothes')" ng-repeat="item in FemaleClothes.EU| filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'CH') && (femaleType === 'isWomenClothes')" ng-repeat="item in FemaleClothes.CH| filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'JP') && (femaleType === 'isWomenClothes')" ng-repeat="item in FemaleClothes.JP| filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'AU') && (femaleType === 'isWomenClothes')" ng-repeat="item in FemaleClothes.AU| filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                <!-- Women Bras -->
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'US') && (femaleType === 'isWomenBras')" ng-repeat="item in WomenBras.US" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'UK') && (femaleType === 'isWomenBras')" ng-repeat="item in WomenBras.UK" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'EU') && (femaleType === 'isWomenBras')" ng-repeat="item in WomenBras.EU" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'CH') && (femaleType === 'isWomenBras')" ng-repeat="item in WomenBras.CH" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'JP') && (femaleType === 'isWomenBras')" ng-repeat="item in WomenBras.JP" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isFemale') && (inputCountry === 'AU') && (femaleType === 'isWomenBras')" ng-repeat="item in WomenBras.AU" ng-value="{{$index}}">{{item}}</option>
+                <!-- Men tops -->
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'US') && (maleType === 'isMenTops')" ng-repeat="item in MaleTops.US | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'UK') && (maleType === 'isMenTops')" ng-repeat="item in MaleTops.UK | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'EU') && (maleType === 'isMenTops')" ng-repeat="item in MaleTops.EU | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'CH') && (maleType === 'isMenTops')" ng-repeat="item in MaleTops.CH | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'JP') && (maleType === 'isMenTops')" ng-repeat="item in MaleTops.JP | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'AU') && (maleType === 'isMenTops')" ng-repeat="item in MaleTops.AU | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                <!-- Men Shirts -->
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'US') && (maleType === 'isMenShirts')" ng-repeat="item in MaleShirts.US" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'UK') && (maleType === 'isMenShirts')" ng-repeat="item in MaleShirts.UK" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'EU') && (maleType === 'isMenShirts')" ng-repeat="item in MaleShirts.EU" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'CH') && (maleType === 'isMenShirts')" ng-repeat="item in MaleShirts.CH" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'JP') && (maleType === 'isMenShirts')" ng-repeat="item in MaleShirts.JP" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'AU') && (maleType === 'isMenShirts')" ng-repeat="item in MaleShirts.AU" ng-value="{{$index}}">{{item}}</option>
+                <!-- Male Pants -->
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'US') && (maleType === 'isMenPants')" ng-repeat="item in MalePants.US | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'UK') && (maleType === 'isMenPants')" ng-repeat="item in MalePants.UK | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'EU') && (maleType === 'isMenPants')" ng-repeat="item in MalePants.EU | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'CH') && (maleType === 'isMenPants')" ng-repeat="item in MalePants.CH | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'JP') && (maleType === 'isMenPants')" ng-repeat="item in MalePants.JP | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                    <option ng-if="(genderType === 'isMale') && (inputCountry === 'AU') && (maleType === 'isMenPants')" ng-repeat="item in MalePants.AU | filter:removeBlank" ng-value="{{$index}}">{{item}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- Button -->
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-4">
+                <button id="Submit" name="Submit" class="btn btn-danger btn-block" ng-disable="">Convert</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<div class="container">
+    <div class="col-sm-4 col-sm-offset-4">
+        <br/>
+        <h4 ng-bind="Value" ng-cloak></h4>
+    </div>
+</div>
