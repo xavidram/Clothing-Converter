@@ -3,6 +3,24 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+@font-face {
+    font-family: 'BrandonMed';
+    src: url('../styles/fonts/Brandon_med.otf');
+}
+
+@font-face {
+    font-family: 'BrandonBold';
+    src: url('../styles/fonts/BrandonTextBold.otf');
+}
+
+legend {
+    font-family: 'BrandonBold',sans-serif;
+}
+
+* {
+    font-family: 'BrandonMed', sans-serif;
+}
+
 //Custom
 .appContainer {
     height:50em;
@@ -11,6 +29,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     background-color: aqua;
 }
 
+.btn-custom {
+    background-color:  #f04632;
+    color: #ffffff;
+}
 
 .browsehappy {
   margin: 0.2em 0;

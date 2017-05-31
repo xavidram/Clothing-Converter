@@ -1,4 +1,4 @@
-<form class="form-horizontal" ng-submit="processForm()" name="ClothingConversionForm">
+<form class="form-horizontal" ng-submit="processForm()" name="ClothingConversionForm" novalidate>
     <fieldset>
         <!-- Form Name -->
         <legend>Clothing Size Conversion</legend>
@@ -16,7 +16,7 @@
         <div class="form-group" ng-show="genderType=='isMale'">
             <div class="col-md-4 col-md-offset-4">
                 <select id="MaleClothingType" name="MaleClothingType" class="form-control" ng-model="maleType" required>
-                    <option value=""> -- Select Clothing Type -- </option>
+                    <option value="" active> -- Select Clothing Type -- </option>
                     <option value="isMenShoes">Shoes</option>
                     <option value="isMenPants">Pants</option>
                     <option value="isMenShirts">Shirts</option>
@@ -28,7 +28,7 @@
         <div class="form-group" ng-show="genderType=='isFemale'">
             <div class="col-md-4 col-md-offset-4">
                 <select id="FemaleClothingType" name="FemaleClothingType" class="form-control" ng-model="femaleType" required>
-                    <option value=" "> -- Select Clothing Type -- </option>
+                    <option value="" active> -- Select Clothing Type -- </option>
                     <option value="isWomenShoes">Shoes</option>
                     <option value="isWomenClothes">Clothes</option>
                     <option value="isWomenBras">Bras</option>
@@ -124,7 +124,7 @@
         <!-- Button -->
         <div class="form-group">
             <div class="col-md-4 col-md-offset-4">
-                <button id="Submit" name="Submit" class="btn btn-danger btn-block" ng-disable="">Convert</button>
+                <button id="Submit" name="Submit" class="btn btn-custom btn-block" ng-disable="">Convert</button>
             </div>
         </div>
     </fieldset>
