@@ -93,28 +93,28 @@ angular.module('todoAppApp').controller('MainCtrl', function ($scope) {
     // Male Conversion Functions
     $scope.MaleShoesConversion = function () {
         
-        return $scope.fromCountry + " Shoes Size: " + $scope.MaleShoes[$scope.fromCountry][$scope.inputSize];
+        return " Shoes Size: " + $scope.MaleShoes[$scope.fromCountry][$scope.inputSize];
     };
     
     $scope.MaleShirtConversion = function () {
-         return $scope.fromCountry + " Shirts Size: " + $scope.MaleShirts[$scope.fromCountry][$scope.inputSize];
+         return" Shirts Size: " + $scope.MaleShirts[$scope.fromCountry][$scope.inputSize];
     };
     
     $scope.MaleTopsConversion = function () {
-         return $scope.fromCountry + " Top Size: " + $scope.MaleTops[$scope.fromCountry][$scope.inputSize];
+         return" Top Size: " + $scope.MaleTops[$scope.fromCountry][$scope.inputSize];
     };
     
     $scope.MalePantsConversion = function () {
-         return $scope.fromCountry + " Pants Size: " + $scope.MalePants[$scope.fromCountry][$scope.inputSize];
+         return" Pants Size: " + $scope.MalePants[$scope.fromCountry][$scope.inputSize];
     };
     
     // Female conversion functions
     $scope.FemaleShoesConversion = function () {
-         return $scope.fromCountry + " Shoes Size: " + $scope.WomenShoes[$scope.fromCountry][$scope.inputSize];
+         return " Shoes Size: " + $scope.WomenShoes[$scope.fromCountry][$scope.inputSize];
     };
     
     $scope.FemaleClothesConversion = function () {
-        return $scope.fromCountry + " Clothes Size: " + $scope.FemaleClothes[$scope.fromCountry][$scope.inputSize];
+        return " Clothes Size: " + $scope.FemaleClothes[$scope.fromCountry][$scope.inputSize];
     };
     
     $scope.FemaleBrasConversion = function () {
